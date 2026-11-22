@@ -9,7 +9,13 @@ function createGrid(size) {
     gridBox.style.height = `calc(100% / ${size})`;
 
     gridBox.addEventListener("mouseover", () => {
-      gridBox.style.backgroundColor = getRandomRGB();
+      if (gridBox.style.backgroundColor === "") {
+        gridBox.style.backgroundColor = getRandomRGB();
+        gridBox.style.opacity = "1";
+      } else {
+        const currentOpacity = Number(gridBox.style.opacity);
+        gridBox.style.opacity = Math.max(0, +(currentOpacity - 0.1).toFixed(1));
+      }
     });
     container.appendChild(gridBox);
   }
