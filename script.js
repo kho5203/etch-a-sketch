@@ -9,12 +9,19 @@ function createGrid(size) {
     gridBox.style.height = `calc(100% / ${size})`;
 
     gridBox.addEventListener("mouseover", () => {
-      gridBox.classList.add("hovered");
+      gridBox.style.backgroundColor = getRandomRGB();
     });
     container.appendChild(gridBox);
   }
 }
 createGrid(16);
+
+function getRandomRGB() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
 
 createButton.addEventListener("click", () => {
   const numberInput = Number(
